@@ -363,13 +363,14 @@ handlers.theorySub = function(data, callback){
 		var target = series1.target;
 		for(i=0;i<series1.no_of_stud;++i){
 			var coscore = {};
+			var comax = {};
 			for(j=0;j<12;++j){
 				for(idx in serials){
 					var score = series1.marksmark[j][idx][i];
 					var max = series1.mark[j][idx]
 					var co = series1.co[j][idx];
-					coscore[co] += score;
-					comax[co] += max;
+					coscore[co] = coscore.hasOwnProperty(co) ? coscore[co] + parseInt(score) : parseInt(score);
+					comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);
 				}
 			}
 			for(k=0;k<8;++k){
@@ -382,7 +383,6 @@ handlers.theorySub = function(data, callback){
 		for(i=0;i<8;++i){
 				series1.attainment.perc['CO' + (i + 1)] = (count.series1['CO' + (i + 1)] / series1.no_of_stud) * 100;
 				series1.attainment.level['CO' + (i + 1)] = series1.attainment.perc['CO' + (i + 1)] >= series1.thresh3 ? 3 : series1.attainment.perc['CO' + (i + 1)] >= series1.thresh2 ? 2 : series1.attainment.perc['CO' + (i + 1)] >= series1.thresh1 ? 1 : 0
-			
 		}
 
 
@@ -391,13 +391,14 @@ handlers.theorySub = function(data, callback){
 		var target = series2.target;
 		for(i=0;i<series2.no_of_stud;++i){
 			var coscore = {};
+			var comax = {};
 			for(j=0;j<12;++j){
 				for(idx in serials){
 					var score = series2.marksmark[j][idx][i];
 					var max = series2.mark[j][idx]
 					var co = series2.co[j][idx];
-					coscore[co] += score;
-					comax[co] += max;
+					coscore[co] = coscore.hasOwnProperty(co) ? coscore[co] + parseInt(score) : parseInt(score);
+					comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);
 				}
 			}
 			for(k=0;k<8;++k){
@@ -419,13 +420,15 @@ handlers.theorySub = function(data, callback){
 		var target = assign1.target;
 		for(i=0;i<assign1.no_of_stud;++i){
 			var coscore = {};
+			var comax = {};
 			for(j=0;j<12;++j){
 				var score = assign1.marksmark[j][i];
 				var max = assign1.mark[j];
 				var co = assign1.co[j];
-				coscore[co] += score;
-				comax[co] += max;	
+				coscore[co] = coscore.hasOwnProperty(co) ? coscore[co] + parseInt(score) : parseInt(score);
+				comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);	
 			}
+			console.log(coscore);
 			for(k=0;k<8;++k){
 				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
 					count.assign1['CO' + (k + 1)] += 1;
@@ -444,12 +447,13 @@ handlers.theorySub = function(data, callback){
 		var target = assign2.target;
 		for(i=0;i<assign2.no_of_stud;++i){
 			var coscore = {};
+			var comax = {};
 			for(j=0;j<12;++j){
 				var score = assign2.marksmark[j][i];
 				var max = assign2.mark[j];
 				var co = assign2.co[j];
-				coscore[co] += score;
-				comax[co] += max;	
+				coscore[co] = coscore.hasOwnProperty(co) ? coscore[co] + parseInt(score) : parseInt(score);
+				comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);	
 			}
 			for(k=0;k<8;++k){
 				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
@@ -462,10 +466,8 @@ handlers.theorySub = function(data, callback){
 				assign2.attainment.perc['CO' + (i + 1)] = (count.assign2['CO' + (i + 1)] / assign2.no_of_stud) * 100;
 				assign2.attainment.level['CO' + (i + 1)] = assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh3 ? 3 : assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh2 ? 2 : assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh1 ? 1 : 0
 		}
-		console.log(count);
-		console.log(series1.attainment);
-		console.log(assign1.attainment);
 
+		console.log(assign1.attainment);
 	}
 	else {
 		callback(400);
