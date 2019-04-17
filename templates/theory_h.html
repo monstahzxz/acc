@@ -1,0 +1,4154 @@
+<div class="theoryh">
+	<div class="navbar left">
+		<b>Navigation</b>
+		<ul>
+			<li><button type="button" id="navuniv">University settings + Settings</button></li>
+			<li><button type="button" id="navseries1">Series 1</button></li>
+			<li><button type="button" id="navseries2">Series 2</button></li>
+			<li><button type="button" id="navassign1">Assignment 1</button></li>
+			<li><button type="button" id="navassign2">Assignment 2</button></li>
+		</ul>
+	</div>
+	<div class="vr"></div>
+	<form id="theoryh" action="theory/submit" method="POST">
+		<div class="theoryv2 center">
+			<div class="inputWrapper">
+				<div class="inputLabel">Name: </div>
+				<input type="text" name="name" autocomplete="off"/ required>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Designation: </div>
+				<select name="desig" required>
+					<option value="prof">Professor</option>
+					<option value="astprof">Assistant Professor</option>
+				</select>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Department: </div>
+				<input value="Dept. of Computer Science" type="text" name="dept" autocomplete="off" readonly required/>
+			</div>
+			<div class="inputWrapper left">
+				<div class="inputLabel">Course: </div>
+				<input type="text" name="course" autocomplete="off" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Course code: </div>
+				<input type="text" name="crscode" autocomplete="off" required/>
+			</div>
+			<div class="clear"></div>
+			<div class="inputWrapper left">
+				<div class="inputLabel">Academic Year: </div>
+				<select name="acadyear" required>
+					<option value="2018-19">2018-19</option>
+					<option value="2017-18">2017-18</option>
+					<option value="2016-17">2016-17</option>
+					<option value="2015-16">2015-16</option>
+				</select>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Semester: </div>
+				<select name="sem" required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+				</select>
+			</div>
+			<div class="clear"></div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Batch Year: </div>
+				<select name="batchyear" required>
+					<option value="2018-19">2018-19</option>
+					<option value="2017-18">2017-18</option>
+					<option value="2016-17">2016-17</option>
+					<option value="2015-16">2015-16</option>
+				</select>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Select the University: </div>
+				<select name="univ" required>
+					<option value="KTU">KTU</option>
+					<option value="KU">KU</option>
+					<option value="KU15-16">KU15-16</option>
+				</select>
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theoryv2n">Next</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theorycalc center">
+			<b>Index Calculation Rules For University Examinations</b>
+			<hr/>
+			<div class="inputWrapper">
+				<div class="inputLabel">Number of students in the class: </div>
+				<input type="number" name="noofstud" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Univ. Maximum Marks: </div>
+				<input type="number" name="marks" value="100" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Target &ge;</div>
+				<input type="number" name="target" required/>
+			</div><hr/><hr/>
+			<b>Thresholds:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 3) &ge;</div>
+				<input type="number" name="thresh3" value="80" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="thresh2" value="70" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="thresh1" value="60" required/> %
+			</div><hr/><hr/>
+			<b>CO Attainment Weightages:</b><br/><br/>
+			<b>Weightages:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Internal (Tests, Assignments,..)</div>
+				<input type="number" name="weightint" value="40" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">External (University Examinations)</div>
+				<input type="number" name="weightext" value="60" required/> %
+			</div><hr/>
+			<b>Internal</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Series Tests</div>
+				<input type="number" name="intseries" value="60" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Assignments</div>
+				<input type="number" name="intassign" value="40" required/> %
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theorycalcn" class="left">Next</button>
+				<button id="theorycalcb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryuniv center">
+			<b>Enter university marks</b><br/><hr/>
+			<table class="tbl" border="1">
+				<!--<tr>
+					<th>Sl No</th>
+					<th>Roll No</th>
+					<th>Name</th>
+					<th>Univ Marks</th>
+				</tr>-->
+				<!--<tr>
+					<td><input type="number" name="slno"></td>
+					<td><input type="number" name="rollno"></td>
+					<td><input type="text" name="name"></td>
+					<td><input type="number" name="marks"></td>
+				</tr>-->
+			</table>
+			<div class="inputWrapper">
+				<button type="button" id="theoryunivn" class="left">Next</button>
+				<button id="theoryunivb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryseries1 center">
+			<b>Series 1</b><hr/><hr/>
+			Enter maximum mark for each division of question
+			<table border="1">
+				<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>a</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark1a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark2a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark3a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark4a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark5a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark6a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark7a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark8a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark9a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark10a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark11a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark12a" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>b</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark1b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark2b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark3b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark4b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark5b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark6b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark7b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark8b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark9b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark10b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark11b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark12b" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>c</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark1c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark2c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark3c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark4c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark5c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark6c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark7c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark8c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark9c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark10c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark11c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark12c" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>d</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark1d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark2d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark3d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark4d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark5d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark6d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark7d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark8d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark9d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark10d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark11d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1mark12d" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr/><br/>
+			Choose COs corresponding to each division of the question
+			<table border="1">
+					<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>a</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co1a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co2a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co3a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co4a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co5a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co6a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co7a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co8a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co9a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co10a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co11a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co12a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>b</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co1b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co2b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co3b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co4b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co5b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co6b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co7b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co8b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co9b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co10b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co11b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co12b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>c</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co1c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co2c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co3c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co4c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co5c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co6c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co7c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co8c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co9c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co10c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co11c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co12c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>d</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co1d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co2d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co3d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co4d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co5d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co6d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co7d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co8d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co9d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co10d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co11d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series1co12d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<button type="button" id="theoryseries1n" class="left">Next</button>
+			<button type="button" id="theoryseries1b">Back</button>
+		</div>
+
+
+		<div class="theoryseries1calc center">
+			<b>Index Calculation Rules For Series 1</b>
+			<hr/>
+			<div class="inputWrapper">
+				<div class="inputLabel">Number of students attended the test: </div>
+				<input type="number" name="series1noofstud" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Target &ge;</div>
+				<input type="number" name="series1target" required/>
+			</div><hr/><hr/>
+			<b>Thresholds:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 3) &ge;</div>
+				<input type="number" name="series1thresh3" value="80" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="series1thresh2" value="70" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="series1thresh1" value="60" required/> %
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theoryseries1calcn" class="left">Next</button>
+				<button type="button" id="theoryseries1calcb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryseries1marks center">
+			<table border="1">
+				<!--<tr>
+					<th>Roll No</th>
+					<th width="30%">Name of the student</th>
+					<th>Enter marks scored in the examination</th>
+				</tr>
+				<tr>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series1marksrollno' + (i + 1) + '"required/>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="text" name="series1marksname' + (i + 1) + '" required/>
+						</div>
+					</td>
+					<td>
+						<table border="1">
+						
+							<tr>
+								<th>div</th>
+								<th>&#8544;</th>
+								<th>&#8545;</th>
+								<th>&#8546;</th>
+								<th>&#8547;</th>
+								<th>&#8548;</th>
+								<th>&#8549;</th>
+								<th>&#8550;</th>
+								<th>&#8551;</th>
+								<th>&#8552;</th>
+								<th>&#8553;</th>
+								<th>&#8554;</th>
+								<th>&#8555;</th>
+							</tr>
+							<tr>
+								<th>
+									a
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark1a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark2a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark3a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark4a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark5a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark6a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark7a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark8a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark9a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark10a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark11a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark12a' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									b
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark1b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark2b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark3b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark4b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark5b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark6b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark7b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark8b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark9b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark10b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark11b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark12b' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									c
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark1c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark2c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark3c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark4c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark5c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark6c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark7c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark8c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark9c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark10c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark11c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark12c' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									d
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark1d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark2d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark3d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark4d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark5d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark6d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark7d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark8d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark9d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark10d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark11d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series1marksmark12d' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>-->
+			</table>
+			<button type="button" id="theoryseries1marksn">Next</button>
+			<button type="button" id="theoryseries1marksb">Back	</button>
+		</div>
+
+
+		<div class="theoryseries2 center">
+			<b>Series 2</b><hr/><hr/>
+			Enter maximum mark for each division of question
+			<table border="1">
+				<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>a</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark1a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark2a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark3a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark4a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark5a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark6a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark7a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark8a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark9a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark10a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark11a" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark12a" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>b</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark1b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark2b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark3b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark4b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark5b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark6b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark7b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark8b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark9b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark10b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark11b" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark12b" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>c</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark1c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark2c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark3c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark4c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark5c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark6c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark7c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark8c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark9c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark10c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark11c" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark12c" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>d</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark1d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark2d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark3d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark4d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark5d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark6d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark7d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark8d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark9d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark10d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark11d" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2mark12d" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr/><br/>
+			Choose COs corresponding to each division of the question
+			<table border="1">
+					<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>a</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co1a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co2a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co3a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co4a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co5a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co6a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co7a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co8a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co9a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co10a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co11a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co12a">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>b</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co1b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co2b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co3b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co4b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co5b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co6b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co7b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co8b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co9b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co10b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co11b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co12b">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>c</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co1c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co2c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co3c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co4c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co5c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co6c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co7c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co8c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co9c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co10c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co11c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co12c">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>d</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co1d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co2d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co3d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co4d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co5d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co6d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co7d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co8d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co9d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co10d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co11d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="series2co12d">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<button type="button" id="theoryseries2n" class="left">Next</button>
+			<button type="button" id="theoryseries2b">Back</button>
+		</div>
+
+
+		<div class="theoryseries2calc center">
+			<b>Index Calculation Rules For Series 2</b>
+			<hr/>
+			<div class="inputWrapper">
+				<div class="inputLabel">Number of students attended the test: </div>
+				<input type="number" name="series2noofstud" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Target &ge;</div>
+				<input type="number" name="series2target" required/>
+			</div><hr/><hr/>
+			<b>Thresholds:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 3) &ge;</div>
+				<input type="number" name="series2thresh3" value="80" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="series2thresh2" value="70" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="series2thresh1" value="60" required/> %
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theoryseries2calcn" class="left">Next</button>
+				<button type="button" id="theoryseries2calcb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryseries2marks center">
+			<table border="1">
+				<!--<tr>
+					<th>Roll No</th>
+					<th width="30%">Name of the student</th>
+					<th>Enter marks scored in the examination</th>
+				</tr>
+				<tr>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2marksrollno' + (i + 1) + '"required/>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="text" name="series2marksname' + (i + 1) + '" required/>
+						</div>
+					</td>
+					<td>
+						<table border="1">
+						
+							<tr>
+								<th>div</th>
+								<th>&#8544;</th>
+								<th>&#8545;</th>
+								<th>&#8546;</th>
+								<th>&#8547;</th>
+								<th>&#8548;</th>
+								<th>&#8549;</th>
+								<th>&#8550;</th>
+								<th>&#8551;</th>
+								<th>&#8552;</th>
+								<th>&#8553;</th>
+								<th>&#8554;</th>
+								<th>&#8555;</th>
+							</tr>
+							<tr>
+								<th>
+									a
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12a' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									b
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12b' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									c
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12c' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									d
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12d' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>-->
+			</table>
+			<button type="button" id="theoryseries2marksn">Next</button>
+			<button type="button" id="theoryseries2marksb">Back	</button>
+		</div>
+
+
+
+		<div class="theoryassign1 center">
+			<b>Assignment 1</b><hr/><hr/>
+			Enter maximum mark for each division of question
+			<table border="1">
+				<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>MAX</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark1" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark2" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark3" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark4" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark5" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark6" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark7" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark8" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark9" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark10" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark11" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign1mark12" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr/><br/>
+			Choose COs corresponding to each division of the question
+			<table border="1">
+					<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>CO</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co1">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co2">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co3">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co4">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co5">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co6">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co7">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co8">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co9">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co10">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co11">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign1co12">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<button type="button" id="theoryassign1n" class="left">Next</button>
+			<button type="button" id="theoryassign1b">Back</button>
+		</div>
+
+
+		<div class="theoryassign1calc center">
+			<b>Index Calculation Rules For Assignment 1</b>
+			<hr/>
+			<div class="inputWrapper">
+				<div class="inputLabel">Number of students attended the test: </div>
+				<input type="number" name="assign1noofstud" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Target &ge;</div>
+				<input type="number" name="assign1target" required/>
+			</div><hr/><hr/>
+			<b>Thresholds:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 3) &ge;</div>
+				<input type="number" name="assign1thresh3" value="80" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="assign1thresh2" value="70" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="assign1thresh1" value="60" required/> %
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theoryassign1calcn" class="left">Next</button>
+				<button type="button" id="theoryassign1calcb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryassign1marks center">
+			<table border="1">
+				<!--<tr>
+					<th>Roll No</th>
+					<th width="30%">Name of the student</th>
+					<th>Enter marks scored in the examination</th>
+				</tr>
+				<tr>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2marksrollno' + (i + 1) + '"required/>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="text" name="series2marksname' + (i + 1) + '" required/>
+						</div>
+					</td>
+					<td>
+						<table border="1">
+						
+							<tr>
+								<th>div</th>
+								<th>&#8544;</th>
+								<th>&#8545;</th>
+								<th>&#8546;</th>
+								<th>&#8547;</th>
+								<th>&#8548;</th>
+								<th>&#8549;</th>
+								<th>&#8550;</th>
+								<th>&#8551;</th>
+								<th>&#8552;</th>
+								<th>&#8553;</th>
+								<th>&#8554;</th>
+								<th>&#8555;</th>
+							</tr>
+							<tr>
+								<th>
+									a
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12a' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									b
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12b' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									c
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12c' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									d
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12d' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>-->
+			</table>
+			<button type="button" id="theoryassign1marksn">Next</button>
+			<button type="button" id="theoryassign1marksb">Back	</button>
+		</div>
+
+
+
+		<div class="theoryassign2 center">
+			<b>Assignment 2</b><hr/><hr/>
+			Enter maximum mark for each division of question
+			<table border="1">
+				<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>MAX</th>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark1" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark2" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark3" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark4" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark5" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark6" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark7" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark8" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark9" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark10" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark11" />
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="assign2mark12" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr/><br/>
+			Choose COs corresponding to each division of the question
+			<table border="1">
+					<tr>
+					<th></th>
+					<th>&#8544;</th>
+					<th>&#8545;</th>
+					<th>&#8546;</th>
+					<th>&#8547;</th>
+					<th>&#8548;</th>
+					<th>&#8549;</th>
+					<th>&#8550;</th>
+					<th>&#8551;</th>
+					<th>&#8552;</th>
+					<th>&#8553;</th>
+					<th>&#8554;</th>
+					<th>&#8555;</th>
+				</tr>
+				<tr>
+					<th>CO</th>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co1">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co2">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co3">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co4">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co5">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co6">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co7">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co8">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co9">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co10">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co11">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<select name="assign2co12">
+								<option value="nill"></option>
+								<option value="CO1">CO1</option>
+								<option value="CO2">CO2</option>
+								<option value="CO3">CO3</option>
+								<option value="CO4">CO4</option>
+								<option value="CO5">CO5</option>
+								<option value="CO6">CO6</option>
+								<option value="CO7">CO7</option>
+								<option value="CO8">CO8</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<button type="button" id="theoryassign2n" class="left">Next</button>
+			<button type="button" id="theoryassign2b">Back</button>
+		</div>
+
+
+		<div class="theoryassign2calc center">
+			<b>Index Calculation Rules For Assignment 2</b>
+			<hr/>
+			<div class="inputWrapper">
+				<div class="inputLabel">Number of students attended the test: </div>
+				<input type="number" name="assign2noofstud" required/>
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Target &ge;</div>
+				<input type="number" name="assign2target" required/>
+			</div><hr/><hr/>
+			<b>Thresholds:</b>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 3) &ge;</div>
+				<input type="number" name="assign2thresh3" value="80" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="assign2thresh2" value="70" required/> %
+			</div>
+			<div class="inputWrapper">
+				<div class="inputLabel">Threshold (Level 2) &ge;</div>
+				<input type="number" name="assign2thresh1" value="60" required/> %
+			</div>
+			<div class="inputWrapper">
+				<button type="button" id="theoryassign2calcn" class="left">Next</button>
+				<button type="button" id="theoryassign2calcb">Back</button>
+			</div>
+			<div class="error"></div>
+		</div>
+
+
+		<div class="theoryassign2marks center">
+			<table border="1">
+				<!--<tr>
+					<th>Roll No</th>
+					<th width="30%">Name of the student</th>
+					<th>Enter marks scored in the examination</th>
+				</tr>
+				<tr>
+					<td>
+						<div class="inputWrapper">
+							<input type="number" name="series2marksrollno' + (i + 1) + '"required/>
+						</div>
+					</td>
+					<td>
+						<div class="inputWrapper">
+							<input type="text" name="series2marksname' + (i + 1) + '" required/>
+						</div>
+					</td>
+					<td>
+						<table border="1">
+						
+							<tr>
+								<th>div</th>
+								<th>&#8544;</th>
+								<th>&#8545;</th>
+								<th>&#8546;</th>
+								<th>&#8547;</th>
+								<th>&#8548;</th>
+								<th>&#8549;</th>
+								<th>&#8550;</th>
+								<th>&#8551;</th>
+								<th>&#8552;</th>
+								<th>&#8553;</th>
+								<th>&#8554;</th>
+								<th>&#8555;</th>
+							</tr>
+							<tr>
+								<th>
+									a
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11a' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12a' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									b
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11b' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12b' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									c
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11c' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12c' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									d
+								</th>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark1d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark2d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark3d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark4d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark5d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark6d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark7d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark8d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark9d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark10d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark11d' + (i + 1) + '" required/>
+									</div>
+								</td>
+								<td>
+									<div class="inputWrapper">
+										<input type="number" name="series2marksmark12d' + (i + 1) + '" required/>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>-->
+			</table>
+			<button type="submit" id="theoryassign2marksn">Submit</button>
+			<button type="button" id="theoryassign2marksb">Back	</button>
+		</div>
+	</form>
+</div>

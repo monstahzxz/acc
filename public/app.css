@@ -1,0 +1,54 @@
+body {
+	background: url("bg.png");
+}
+
+a {
+	text-decoration: none;
+}
+
+.vr {
+	position: absolute;
+	border-left: 3px solid green;
+  	height: 50%;
+  	left: 18%;
+}
+
+.left {
+	float: left;
+	padding-right: 15px;
+}
+
+.clear {
+	clear: both;
+}
+
+.inputWrapper {
+	padding-bottom: 10px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+.theoryseries1 input, .theoryseries2 input, .theoryassign1 input, .theoryassign2 input {
+	width: 100%
+}
+
+.theoryseries1 select, .theoryseries2 select, .theoryassign1 select, .theoryassign2 select {
+	width: 100%
+}
+
+.theoryseries1marks input, .theoryseries2marks input, .theoryassign1marks input, .theoryassign2marks input {
+	width: 100%;
+}
