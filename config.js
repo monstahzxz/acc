@@ -1,6 +1,6 @@
 var config = {
-	'httpPort' : 3000,
-	'httpsPort' : 30001
+	'httpPort' : 3006,
+	'httpsPort' : 3007
 };
 
 

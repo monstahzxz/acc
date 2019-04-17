@@ -386,11 +386,13 @@ handlers.theorySub = function(data, callback){
 
 		var target = series2.target;
 		for(i=0;i<series2.no_of_stud;++i){
+			var coscore = {};
 			for(j=0;j<12;++j){
 				for(idx in serials){
 					var score = series2.marksmark[j][idx][i];
 					var max = series2.mark[j][idx]
 					var co = series2.co[j][idx];
+					coscore[co] += score;
 
 					if((score / max) * 100 > target){
 						count.series2[co] += 1;
