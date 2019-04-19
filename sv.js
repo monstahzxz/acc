@@ -52,6 +52,7 @@ server.unifiedServer = function(req,res){
 	});
 };
 
+
 server.processHandlerResponse = function(res,method,trimmedPath,statusCode,payload,contentType){
 	contentType = typeof(contentType) == 'string' ? contentType : 'json';
 	statusCode = typeof(statusCode) == 'number' ? statusCode : 200;

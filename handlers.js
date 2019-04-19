@@ -1,5 +1,5 @@
 var helpers = require('./helpers');
-var xlsx = require('xlsx');
+var xl = require('./xl')
 
 var handlers = {};
 
@@ -317,44 +317,44 @@ handlers.theorySub = function(data, callback){
 
 		var count = {
 			'series1' : {
-				'CO1' : 0,
-				'CO2' : 0,
-				'CO3' : 0,
-				'CO4' : 0,
-				'CO5' : 0,
-				'CO6' : 0,
-				'CO7' : 0,
-				'CO8' : 0
+				'CO1' : -1,
+				'CO2' : -1,
+				'CO3' : -1,
+				'CO4' : -1,
+				'CO5' : -1,
+				'CO6' : -1,
+				'CO7' : -1,
+				'CO8' : -1
 			},
 			'series2' : {
-				'CO1' : 0,
-				'CO2' : 0,
-				'CO3' : 0,
-				'CO4' : 0,
-				'CO5' : 0,
-				'CO6' : 0,
-				'CO7' : 0,
-				'CO8' : 0
+				'CO1' : -1,
+				'CO2' : -1,
+				'CO3' : -1,
+				'CO4' : -1,
+				'CO5' : -1,
+				'CO6' : -1,
+				'CO7' : -1,
+				'CO8' : -1
 			},
 			'assign1' : {
-				'CO1' : 0,
-				'CO2' : 0,
-				'CO3' : 0,
-				'CO4' : 0,
-				'CO5' : 0,
-				'CO6' : 0,
-				'CO7' : 0,
-				'CO8' : 0
+				'CO1' : -1,
+				'CO2' : -1,
+				'CO3' : -1,
+				'CO4' : -1,
+				'CO5' : -1,
+				'CO6' : -1,
+				'CO7' : -1,
+				'CO8' : -1
 			},
 			'assign2' : {
-				'CO1' : 0,
-				'CO2' : 0,
-				'CO3' : 0,
-				'CO4' : 0,
-				'CO5' : 0,
-				'CO6' : 0,
-				'CO7' : 0,
-				'CO8' : 0
+				'CO1' : -1,
+				'CO2' : -1,
+				'CO3' : -1,
+				'CO4' : -1,
+				'CO5' : -1,
+				'CO6' : -1,
+				'CO7' : -1,
+				'CO8' : -1
 			}
 		};
 
@@ -374,15 +374,21 @@ handlers.theorySub = function(data, callback){
 				}
 			}
 			for(k=0;k<8;++k){
-				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
-					count.series1['CO' + (k + 1)] += 1;
+				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 >= target){
+					count.series1['CO' + (k + 1)] = count.series1['CO' + (k + 1)] == -1 ? 1 : count.series1['CO' + (k + 1)] + 1;
 				}
 			}
 		}
 
 		for(i=0;i<8;++i){
+		if(count.series1['CO' + (i + 1)] == -1){
+				series1.attainment.perc['CO' + (i + 1)] = 'nill';
+				series1.attainment.level['CO' + (i + 1)] = 'nill';
+			}
+			else {
 				series1.attainment.perc['CO' + (i + 1)] = (count.series1['CO' + (i + 1)] / series1.no_of_stud) * 100;
 				series1.attainment.level['CO' + (i + 1)] = series1.attainment.perc['CO' + (i + 1)] >= series1.thresh3 ? 3 : series1.attainment.perc['CO' + (i + 1)] >= series1.thresh2 ? 2 : series1.attainment.perc['CO' + (i + 1)] >= series1.thresh1 ? 1 : 0
+			}
 		}
 
 
@@ -402,16 +408,21 @@ handlers.theorySub = function(data, callback){
 				}
 			}
 			for(k=0;k<8;++k){
-				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
-					count.series2['CO' + (k + 1)] += 1;
+				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 >= target){
+					count.series2['CO' + (k + 1)] = count.series2['CO' + (k + 1)] == -1 ? 1 : count.series2['CO' + (k + 1)] + 1;
 				}
 			}
 		}
 
 		for(i=0;i<8;++i){
+			if(count.series2['CO' + (i + 1)] == -1){
+				series2.attainment.perc['CO' + (i + 1)] = 'nill';
+				series2.attainment.level['CO' + (i + 1)] = 'nill';
+			}
+			else {
 				series2.attainment.perc['CO' + (i + 1)] = (count.series2['CO' + (i + 1)] / series2.no_of_stud) * 100;
 				series2.attainment.level['CO' + (i + 1)] = series2.attainment.perc['CO' + (i + 1)] >= series2.thresh3 ? 3 : series2.attainment.perc['CO' + (i + 1)] >= series2.thresh2 ? 2 : series2.attainment.perc['CO' + (i + 1)] >= series2.thresh1 ? 1 : 0
-			
+			}
 		}
 
 
@@ -428,17 +439,23 @@ handlers.theorySub = function(data, callback){
 				coscore[co] = coscore.hasOwnProperty(co) ? coscore[co] + parseInt(score) : parseInt(score);
 				comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);	
 			}
-			console.log(coscore);
+
 			for(k=0;k<8;++k){
-				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
-					count.assign1['CO' + (k + 1)] += 1;
+				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 >= target){
+					count.assign1['CO' + (k + 1)] = count.assign1['CO' + (k + 1)] == -1 ? 1 : count.assign1['CO' + (k + 1)] + 1;
 				}
 			}
 		}
 
 		for(i=0;i<8;++i){
+			if(count.assign1['CO' + (i + 1)] == -1){
+				assign1.attainment.perc['CO' + (i + 1)] = 'nill';
+				assign1.attainment.level['CO' + (i + 1)] = 'nill';
+			}
+			else {
 				assign1.attainment.perc['CO' + (i + 1)] = (count.assign1['CO' + (i + 1)] / assign1.no_of_stud) * 100;
 				assign1.attainment.level['CO' + (i + 1)] = assign1.attainment.perc['CO' + (i + 1)] >= assign1.thresh3 ? 3 : assign1.attainment.perc['CO' + (i + 1)] >= assign1.thresh2 ? 2 : assign1.attainment.perc['CO' + (i + 1)] >= assign1.thresh1 ? 1 : 0
+			}
 		}
 
 
@@ -456,18 +473,130 @@ handlers.theorySub = function(data, callback){
 				comax[co] = comax.hasOwnProperty(co) ? comax[co] + parseInt(max) : parseInt(max);	
 			}
 			for(k=0;k<8;++k){
-				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 > target){
-					count.assign2['CO' + (k + 1)] += 1;
+				if((coscore['CO' + (k + 1)] / comax['CO' + (k + 1)]) * 100 >= target){
+					count.assign2['CO' + (k + 1)] = count.assign2['CO' + (k + 1)] == -1 ? 1 : count.assign2['CO' + (k + 1)] + 1;
 				}
 			}
 		}
 
 		for(i=0;i<8;++i){
+				if(count.assign2['CO' + (i + 1)] == -1){
+				assign2.attainment.perc['CO' + (i + 1)] = 'nill';
+				assign2.attainment.level['CO' + (i + 1)] = 'nill';
+			}
+			else {
 				assign2.attainment.perc['CO' + (i + 1)] = (count.assign2['CO' + (i + 1)] / assign2.no_of_stud) * 100;
 				assign2.attainment.level['CO' + (i + 1)] = assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh3 ? 3 : assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh2 ? 2 : assign2.attainment.perc['CO' + (i + 1)] >= assign2.thresh1 ? 1 : 0
+			}
+		}	
+
+		var internal_attainment = {
+			'perc' : {
+				'CO1' : 0,
+				'CO2' : 0,
+				'CO3' : 0,
+				'CO4' : 0,
+				'CO5' : 0,
+				'CO6' : 0,
+				'CO7' : 0,
+				'CO8' : 0
+			},
+			'level' : {
+				'CO1' : 0,
+				'CO2' : 0,
+				'CO3' : 0,
+				'CO4' : 0,
+				'CO5' : 0,
+				'CO6' : 0,
+				'CO7' : 0,
+				'CO8' : 0
+			},
+			'avg' : {
+				'perc' : 0,
+				'level' : 0
+			}
+		};
+
+		series1.attainment.perc['CO1'] = 50;
+		series2.attainment.perc['CO1'] = 'nill';
+		assign1.attainment.perc['CO1'] = 60;
+		assign2.attainment.perc['CO1'] = 80;
+		var counter = 0;
+
+		for(i=0;i<8;++i){
+			series_weightage_perc = series1.attainment.perc['CO' + (i + 1)] == 'nill' && series2.attainment.perc['CO' + (i + 1)] == 'nill' ? 'copy' : series1.attainment.perc['CO' + (i + 1)] !== 'nill' && series2.attainment.perc['CO' + (i + 1)] !== 'nill' ? (series1.attainment.perc['CO' + (i + 1)] + series2.attainment.perc['CO' + (i + 1)]) / 2 : series1.attainment.perc['CO' + (i + 1)] == 'nill' ? series2.attainment.perc['CO' + (i + 1)] : series1.attainment.perc['CO' + (i + 1)]; 
+			assign_weightage_perc = assign1.attainment.perc['CO' + (i + 1)] == 'nill' && assign2.attainment.perc['CO' + (i + 1)] == 'nill' ? 'copy' : assign1.attainment.perc['CO' + (i + 1)] !== 'nill' && assign2.attainment.perc['CO' + (i + 1)] !== 'nill' ? (assign1.attainment.perc['CO' + (i + 1)] + assign2.attainment.perc['CO' + (i + 1)]) / 2 : assign1.attainment.perc['CO' + (i + 1)] == 'nill' ? assign2.attainment.perc['CO' + (i + 1)] : assign1.attainment.perc['CO' + (i + 1)];
+
+			series_weightage_level = series1.attainment.level['CO' + (i + 1)] == 'nill' && series2.attainment.level['CO' + (i + 1)] == 'nill' ? 'copy' : series1.attainment.level['CO' + (i + 1)] !== 'nill' && series2.attainment.level['CO' + (i + 1)] !== 'nill' ? (series1.attainment.level['CO' + (i + 1)] + series2.attainment.level['CO' + (i + 1)]) / 2 : series1.attainment.level['CO' + (i + 1)] == 'nill' ? series2.attainment.level['CO' + (i + 1)] : series1.attainment.level['CO' + (i + 1)];
+			assign_weightage_level = assign1.attainment.level['CO' + (i + 1)] == 'nill' && assign2.attainment.level['CO' + (i + 1)] == 'nill' ? 'copy' : assign1.attainment.level['CO' + (i + 1)] !== 'nill' && assign2.attainment.level['CO' + (i + 1)] !== 'nill' ? (assign1.attainment.level['CO' + (i + 1)] + assign2.attainment.level['CO' + (i + 1)]) / 2 : assign1.attainment.level['CO' + (i + 1)] == 'nill' ? assign2.attainment.level['CO' + (i + 1)] : assign1.attainment.level['CO' + (i + 1)];
+
+			internal_attainment.perc['CO' + (i + 1)] = series_weightage_perc == 'copy' && assign_weightage_perc == 'copy' ? 'nill' : series_weightage_perc !== 'copy' && assign_weightage_perc !== 'copy' ? series_weightage_perc * 0.6 + assign_weightage_perc * 0.4 : series_weightage_perc == 'copy' ? assign_weightage_perc : series_weightage_perc;
+			internal_attainment.level['CO' + (i + 1)] = series_weightage_level == 'copy' && assign_weightage_level == 'copy' ? 'nill' : series_weightage_level !== 'copy' && assign_weightage_level !== 'copy' ? series_weightage_level * 0.6 + assign_weightage_level * 0.4 : series_weightage_level == 'copy' ? assign_weightage_level : series_weightage_level;
+
+			internal_attainment.perc['CO' + (i + 1)] = internal_attainment.perc['CO' + (i + 1)] !== 'nill' ? Math.round(internal_attainment.perc['CO' + (i + 1)] * 100) / 100 : 'nill';
+			internal_attainment.level['CO' + (i + 1)] = internal_attainment.perc['CO' + (i + 1)] !== 'nill' ? Math.round(internal_attainment.level['CO' + (i + 1)] * 100) / 100 : 'nill';
+			
+			if(internal_attainment.perc['CO' + (i + 1)] !== 'nill'){
+				counter++;
+				internal_attainment.avg.perc += internal_attainment.perc['CO' + (i + 1)];
+				internal_attainment.avg.level += internal_attainment.level['CO' + (i + 1)];
+			}
 		}
 
-		console.log(assign1.attainment);
+		internal_attainment.avg.perc = internal_attainment.avg.perc / counter;
+		internal_attainment.avg.level = internal_attainment.avg.level / counter;
+
+		var univ = {};
+		univ.count = 0;
+		univ.no_of_stud = data.payload.noofstud;
+		univ.target = data.payload.target;
+		univ.maxmarks = data.payload.marks;
+		univ.thresh1 = data.payload.thresh1;
+		univ.thresh2 = data.payload.thresh2;
+		univ.thresh3 = data.payload.thresh3;
+
+		for(i=0;i<univ.no_of_stud;++i){
+			mark = data.payload['marks' + (i + 1)];
+
+			if((mark / univ.maxmarks) * 100 > univ.target){
+				univ.count++;
+			}
+		}
+
+		univ.attainment = {};
+
+		univ.attainment.perc = (univ.count / univ.no_of_stud) * 100;
+		univ.attainment.level = univ.attainment.perc >= univ.thresh3 ? 3 : univ.attainment.perc >= univ.thresh2 ? 2 : univ.attainment.perc >= univ.thresh1 ? 1 : 0;
+
+
+		var external_attainment = {};
+
+		external_attainment.perc = univ.attainment.perc;
+		external_attainment.level = univ.attainment.level;
+
+		var total_attainment = {};
+
+		total_attainment.perc = internal_attainment.avg.perc * 0.4 + external_attainment.perc * 0.6;
+		total_attainment.level = internal_attainment.avg.level * 0.4 + external_attainment.level * 0.6;
+
+		var xl_data = {
+			'univ' : univ,
+			'series1' : series1,
+			'series2' : series2,
+			'assign1' : assign1,
+			'assign2' : assign2,
+			'internal_attainment' : internal_attainment,
+			'total_attainment' : total_attainment
+		};
+
+		xl.createWorkbook(xl_data, function(err){
+			if(!err){
+				callback(200);
+			}
+			else {
+				callback(500);
+			}
+		});
 	}
 	else {
 		callback(400);
