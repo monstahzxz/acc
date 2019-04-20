@@ -92,9 +92,16 @@ handlers.theorySub = function(data, callback){
 		var name = typeof(data.payload.name) == 'string' && data.payload.name.length > 0 ? data.payload.name : undefined;
 		var desig = typeof(data.payload.desig) == 'string' && data.payload.desig.length > 0 ? data.payload.desig : undefined;
 		var dept = typeof(data.payload.dept) == 'string' && data.payload.dept.length > 0 ? data.payload.dept : undefined;
+		var univ_type = typeof(data.payload.univ) == 'string' && data.payload.univ.length > 0 ? data.payload.univ : undefined;
 		var course = typeof(data.payload.course) == 'string' && data.payload.course.length > 0 ? data.payload.course : undefined;
 		var crscode = typeof(data.payload.crscode) == 'string' && data.payload.crscode.length > 0 ? data.payload.crscode : undefined;
 		var acadyear = typeof(data.payload.acadyear) == 'string' && data.payload.acadyear.length > 0 ? data.payload.acadyear : undefined;
+		var batchyear = typeof(data.payload.batchyear) == 'string' && data.payload.batchyear.length > 0 ? data.payload.batchyear : undefined;
+		var sem = typeof(data.payload.sem) == 'string' && data.payload.sem.length > 0 ? data.payload.sem : undefined;
+		var weightint = typeof(data.payload.weightint) == 'number' ? data.payload.weightint : undefined;
+		var weightext = typeof(data.payload.weightext) == 'number' ? data.payload.weightext : undefined;
+		var intseries = typeof(data.payload.intseries) == 'number' ? data.payload.intseries : undefined;
+		var intassign = typeof(data.payload.intassign) == 'number' ? data.payload.intassign : undefined;
 		var assign1 = {};
 		var assign2 = {};
 		var series1 = {};
@@ -102,6 +109,21 @@ handlers.theorySub = function(data, callback){
 
 		var serials = ['a','b','c','d'];
 
+		var gen_info = {
+			name,
+			desig,
+			dept,
+			univ_type,
+			course,
+			crscode,
+			acadyear,
+			batchyear,
+			sem,
+			weightint,
+			weightext,
+			intseries,
+			intassign
+		};
 
 		assign1.target = data.payload['assign1target'];
 		assign1.thresh1 = data.payload['assign1thresh1'];
@@ -517,10 +539,6 @@ handlers.theorySub = function(data, callback){
 			}
 		};
 
-		series1.attainment.perc['CO1'] = 50;
-		series2.attainment.perc['CO1'] = 'nill';
-		assign1.attainment.perc['CO1'] = 60;
-		assign2.attainment.perc['CO1'] = 80;
 		var counter = 0;
 
 		for(i=0;i<8;++i){
@@ -580,6 +598,7 @@ handlers.theorySub = function(data, callback){
 		total_attainment.level = internal_attainment.avg.level * 0.4 + external_attainment.level * 0.6;
 
 		var xl_data = {
+			'gen_info' : gen_info,
 			'univ' : univ,
 			'series1' : series1,
 			'series2' : series2,
