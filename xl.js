@@ -23,7 +23,7 @@ xl.createWorkbook = function(data, callback){
 		for(i=0;i<8;++i){
 			worksheet.getCell(config.cells['series1co' + (i + 1) + 'perc']).value = data.series1.attainment.perc['CO' + (i + 1)] !== 'nill' ? data.series1.attainment.perc['CO' + (i + 1)] : undefined;
 			worksheet.getCell(config.cells['series2co' + (i + 1) + 'perc']).value = data.series2.attainment.perc['CO' + (i + 1)] !== 'nill' ? data.series2.attainment.perc['CO' + (i + 1)] : undefined;
-			worksheet.getCell(config.cells['assign1co' + (i + 1) + 'perc']).value = data.assign1.attainment.perc['CO' + (i + 1)] !== 'nill' ? data.assign11.attainment.perc['CO' + (i + 1)] : undefined;
+			worksheet.getCell(config.cells['assign1co' + (i + 1) + 'perc']).value = data.assign1.attainment.perc['CO' + (i + 1)] !== 'nill' ? data.assign1.attainment.perc['CO' + (i + 1)] : undefined;
 			worksheet.getCell(config.cells['assign2co' + (i + 1) + 'perc']).value = data.assign2.attainment.perc['CO' + (i + 1)] !== 'nill' ? data.assign2.attainment.perc['CO' + (i + 1)] : undefined;
 
 			worksheet.getCell(config.cells['series1co' + (i + 1) + 'level']).value = data.series1.attainment.level['CO' + (i + 1)] !== 'nill' ? data.series1.attainment.level['CO' + (i + 1)] : undefined;
