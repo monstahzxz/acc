@@ -63,9 +63,9 @@ xl.createWorkbook = function(data, callback){
 		worksheet.getCell(config.cells.intseriesweightage).value = data.gen_info.intseries;
 		worksheet.getCell(config.cells.intassignweightage).value = data.gen_info.intassign;
 
-		//var save_path = path.join(__dirname,'/data/' + data.gen_info.univ_type + data.gen_info.acadyear + data.gen_info.crscode + data.gen_info.name + '.xlsx');
+		var save_path = path.join(__dirname,'/data/' + data.gen_info.univ_type + '_' + data.gen_info.acadyear + '_' + data.gen_info.crscode + '_' + data.gen_info.name + '.xlsx');
 
-		workbook.xlsx.writeFile('test.xlsx').then(function(){
+		workbook.xlsx.writeFile(save_path).then(function(){
 			console.log('done');
 			callback(false);
 		});
