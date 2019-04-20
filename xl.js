@@ -1,6 +1,7 @@
 var excel = require('exceljs');
 var fs = require('fs');
 var config = require('./config');
+var path = require('path');
 
 
 var xl = {};
@@ -46,7 +47,7 @@ xl.createWorkbook = function(data, callback){
 		for(i=0;i<3;++i){
 			worksheet.getCell(config.cells['series1thresh' + (i + 1)]).value = data.series1['thresh' + (i + 1)];
 			worksheet.getCell(config.cells['series2thresh' + (i + 1)]).value = data.series2['thresh' + (i + 1)];
-			worksheet.getCell(config.cells['assign11thresh' + (i + 1)]).value = data.assign1['thresh' + (i + 1)];
+			worksheet.getCell(config.cells['assign1thresh' + (i + 1)]).value = data.assign1['thresh' + (i + 1)];
 			worksheet.getCell(config.cells['assign2thresh' + (i + 1)]).value = data.assign2['thresh' + (i + 1)];
 			worksheet.getCell(config.cells['univthresh' + (i + 1)]).value = data.univ['thresh' + (i + 1)];
 		}
@@ -62,8 +63,11 @@ xl.createWorkbook = function(data, callback){
 		worksheet.getCell(config.cells.intseriesweightage).value = data.gen_info.intseries;
 		worksheet.getCell(config.cells.intassignweightage).value = data.gen_info.intassign;
 
-		workbook.xlsx.writeFile(data.gen_info.univ_type + data.gen_info.acadyear + data.gen_info.crscode + data.gen_info.name + '.xlsx').then(function(){
+		//var save_path = path.join(__dirname,'/data/' + data.gen_info.univ_type + data.gen_info.acadyear + data.gen_info.crscode + data.gen_info.name + '.xlsx');
+
+		workbook.xlsx.writeFile('test.xlsx').then(function(){
 			console.log('done');
+			callback(false);
 		});
 	});
 };
